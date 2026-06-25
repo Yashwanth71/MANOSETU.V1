@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  gateway:
+    image: nginx:alpine
+    container_name: manosetu-gateway
+    ports:
+      - "80:80"
+    volumes:
+      # Path updated to point to the nested gateway folder
+      - ./services/assessment-service/gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - assessment-service
+    networks:
+      - manosetu-network
+
+  assessment-service:
+    build:
+      # Path updated to point to the nested assessment-service folder
+      context: ./services/assessment-service
+      dockerfile: Dockerfile
+    container_name: manosetu-assessment-service
+    volumes:
+      # Mounts the current nested directory to /app in the container
+      - ./services/assessment-service:/app
+    env_file:
+      # Points directly to the nested .env file
+      - ./services/assessment-service/.env
+    environment:
+      - WATCHFILES_FORCE_POLLING=true
+    networks:
+      - manosetu-network
+
+networks:
+  manosetu-network:
+    driver: bridge

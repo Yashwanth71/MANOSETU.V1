@@ -1,0 +1,29 @@
+# Node / Expo
+manosetu-frontend/node_modules/
+manosetu-frontend/.expo/
+manosetu-frontend/dist/
+manosetu-frontend/web-build/
+manosetu-frontend/expo-env.d.ts
+manosetu-frontend/ios
+manosetu-frontend/android
+manosetu-frontend/.DS_Store
+manosetu-frontend/*.pem
+manosetu-frontend/*.jks
+manosetu-frontend/*.p8
+manosetu-frontend/*.p12
+manosetu-frontend/*.key
+manosetu-frontend/*.mobileprovision
+manosetu-frontend/.metro-health-check*
+manosetu-frontend/npm-debug.*
+manosetu-frontend/yarn-debug.*
+manosetu-frontend/yarn-error.*
+
+# Python / backend
+manosetu-backend/services/assessment-service/.env
+manosetu-backend/**/__pycache__/
+manosetu-backend/*.pyc
+
+# General
+.DS_Store
+.env*
+.git

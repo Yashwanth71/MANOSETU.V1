@@ -1,0 +1,3 @@
+services/assessment-service/.env
+**/__pycache__/
+*.pyc
