@@ -27,3 +27,5 @@ manosetu-backend/*.pyc
 .DS_Store
 .env*
 .git
+apps/web/node_modules/
+apps/web/dist/
