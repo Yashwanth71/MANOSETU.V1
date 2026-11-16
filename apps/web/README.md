@@ -1,6 +1,6 @@
-# ManoSetu web frontend foundation
+# ManoSetu interface lab
 
-An isolated React + TypeScript application alongside the existing Expo client. Existing backend endpoints are deliberately not called: authorization and safety remediation must precede pilot integration.
+React + TypeScript + Vite web frontend alongside the Expo React Native mobile application. Shared theme tokens and breathing engine live in `packages/design-system`.
 
 ## Run
 
@@ -8,20 +8,22 @@ An isolated React + TypeScript application alongside the existing Expo client. E
 cd apps/web
 npm ci
 npm run dev
+npm test
+npm run build
 ```
 
-Run `npm test` for session-clock checks and `npm run build` for strict type checking and a production bundle.
+For mobile, run `npm ci` then `npx expo start` in `manosetu-frontend`. `App.js` opens the new frontend preview; `LegacyApp.js` preserves the previous connected implementation. Metro watches the shared package. Native typography currently uses the platform font fallback.
 
-## Implemented
+## Coverage
 
-Responsive Home, Manas interface with explicit preview consent, mood check-in, 3-minute inline breathing, 7/11-minute full sessions, journal, Setupath session milestones, Support, Community principles, Settings, light/dark appearance, native dialog keyboard behavior, and reduced motion. Breathing uses requestAnimationFrame and pauses on hidden tabs.
+Overview, onboarding, Home, Manas, mood, assessment release requirements, self-care plan, searchable breathing and resources libraries, bookmarks, journal, personal analytics, Setupath, fictional professional directory and appointment selections, community preview, reminders, settings, institutional aggregates, care workflow, and design reference. Web provides richer interactions than the native foundation; see `docs/DESIGN_SYSTEM.md` for the feature matrix.
 
-All user entries are held in memory. No AI calls, booking, diagnosis, authentication, notifications, analytics, or institution connection. Refresh or Clear all preview entries removes entered data. Google Fonts loads typography; self-host fonts before a privacy-sensitive pilot. The full CTO plan is delivered separately; this branch contains the frontend only.
+Eight breathing entries, four interactive rhythms, three web textures, optional browser voice, 3/7/11-minute sessions, pause/reset and hidden-tab pause. Reduced motion removes decorative animation. Theme tokens target accessible text contrast; a complete accessibility audit remains a release requirement.
 
-## Validation
+## Data and integration
 
-Strict TypeScript checking, the production build, and session-clock unit tests passed. Browser interaction and visual QA remain outstanding because the available browser could not access this workspace's loopback preview. Do not treat build success as a completed accessibility or clinical review.
+Entries live in memory. Refresh or Settings → Clear all preview entries clears them. No account, live AI, clinical scoring, booking, push service, telemetry or institution connection is active. Campus/care numbers and professional profiles are synthetic. Menu navigation is not authorization. Review access controls and clinical workflows before connecting backend services. Self-host fonts before a privacy-sensitive pilot.
 
-## Development tools
+## Verification
 
-VS Code recommendations are at the repository root. Run `bash scripts/install-editor-extensions.sh` from the root on a machine with the VS Code CLI. This is an installer for the developer's computer; it does not create provider accounts.
+Production web build and 10 unit tests pass. Browser smoke checks covered dark/light appearance, box-rhythm selection, running/pause states and small-cohort suppression. Expo web and Android JavaScript exports compile; this is not an iOS/Android device test or store-ready build.
